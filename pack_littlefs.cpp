@@ -488,7 +488,7 @@ int Pack_littlefs::actionPack(std::string s_dirName, std::string s_imageName, in
     fsMount(s_imageName, s_imageSize, true);
 
     // 3. copy all directorys/files to the RAM littlefs filesystem.
-    ret = parkFilesToRamFS(s_dirName.c_str(), "");
+    ret = parkFilesToRamFS(s_dirName.c_str(), "") == true ? 0 : 1;
 
     // 4. unmount the RAM littlefs filesystem.
     fsUnmount();
